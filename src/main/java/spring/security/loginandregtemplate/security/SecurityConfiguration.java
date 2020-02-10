@@ -34,9 +34,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/admin").hasRole("ADMIN")
-                .antMatchers("/login").permitAll()
+                .antMatchers("/resources/**").permitAll()
+                .anyRequest().authenticated()
                 .and()
-                .formLogin();
+                .formLogin()
+                .loginPage("/login")
+                .defaultSuccessUrl("/home")
+                .permitAll()
+                .and()
+                .logout().permitAll()
+                .and()
+                .csrf().disable();
     }
 
     @Bean

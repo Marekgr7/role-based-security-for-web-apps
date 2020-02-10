@@ -25,7 +25,6 @@ public class UserDetailsImpl implements UserDetails {
         for (Role role: roleList) {
             authorities.add(new SimpleGrantedAuthority(role.getName()));
         }
-
     }
 
     @Override

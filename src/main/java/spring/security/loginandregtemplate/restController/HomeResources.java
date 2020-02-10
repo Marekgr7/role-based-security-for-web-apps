@@ -31,5 +31,4 @@ public class HomeResources {
             System.out.println("Role to " + userRole);
         }
     }
-
 }
