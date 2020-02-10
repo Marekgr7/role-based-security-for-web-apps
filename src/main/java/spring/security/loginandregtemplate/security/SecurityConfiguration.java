@@ -18,7 +18,6 @@ import javax.sql.DataSource;
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-
     @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder;
 
@@ -40,6 +39,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/login")
                 .defaultSuccessUrl("/home")
+                .failureUrl("/login-error")
                 .permitAll()
                 .and()
                 .logout().permitAll()
