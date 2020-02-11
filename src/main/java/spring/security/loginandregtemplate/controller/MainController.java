@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class MainController {
 
-    @RequestMapping("/home")
+    @RequestMapping("/")
     public String getHome(){
         return "index";
     }

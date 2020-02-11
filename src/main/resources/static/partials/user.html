@@ -1,0 +1,18 @@
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <br>
+            <input type="text" class="form-control" placeholder="search..." ng-model="search">
+            <br>
+        </div>
+    </div>
+
+    <div>
+        <div class="alert alert-info" ng-repeat="user in users | filter : search">
+            <span class="text-capitalize"> <h2>{{user.username}}</h2></span>
+            <span class=""> <h3>{{user.email}}</h3></span>
+            <button ng-click="delete(user.id,$index)" class="btn btn-danger text-right">Delete user</button>
+        </div>
+    </div>
+</div>
