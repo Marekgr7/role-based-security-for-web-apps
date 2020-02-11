@@ -1,6 +1,7 @@
 package spring.security.loginandregtemplate.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import spring.security.loginandregtemplate.model.Role;
 import spring.security.loginandregtemplate.model.User;
@@ -13,11 +14,19 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
 
-    @Autowired
+
     UserRepository userRepository;
 
-    @Autowired
     RoleRepository roleRepository;
+
+    BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    @Autowired
+    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
+        this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+    }
 
     public List<User> fetchAllUsers(){
         return userRepository.findAll();
@@ -28,11 +37,12 @@ public class UserServiceImpl implements UserService {
     }
 
     public void addUser(User user){
-        Role role = new Role("ROLE_USER");
-        List<Role> roleList = new ArrayList(){};
-        roleList.add(role);
-        user.setRoles(roleList);
-
+//        Role role = roleRepository.getOne(2L);
+//        List<Role> roleList = new ArrayList(){};
+//        roleList.add(role);
+//        user.setRoles(roleList);
+        System.out.println(user.toString());
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userRepository.save(user);
     }
 }

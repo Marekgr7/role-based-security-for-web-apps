@@ -4,6 +4,7 @@ import lombok.Data;
 import org.hibernate.annotations.Fetch;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -42,5 +43,17 @@ public class User {
         this.password = password;
         this.isEnabled = isEnabled;
         this.roles = roles;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", isEnabled=" + isEnabled +
+                ", roles=" + roles +
+                '}';
     }
 }

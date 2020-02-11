@@ -11,5 +11,9 @@ app.config(function($routeProvider) {
         .when("/register", {
             controller : "registerCtrl",
             templateUrl : "partials/user.html"
+        })
+        .when("/user-create",{
+            controller: "createUserCtrl",
+            templateUrl : "partials/user-create.html"
         });
 });

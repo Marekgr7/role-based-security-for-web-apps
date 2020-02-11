@@ -3,33 +3,51 @@
 <head>
     <title>QSG Login page</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="css/signin.css">
 </head>
-<body>
+<body class="text-center">
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-4" style="background-color: yellow"></div>
-        <div class="col-sm-4 d-flex justify-content-center" style="padding-top: 100px">
-            <form name='f' action="login" method='POST'>
-                <table>
-                    <tr>
-                        <td><input type='text' name='username' value='' placeholder="username"></td>
-                    </tr>
-                    <tr>
-                        <td><input type='password' name='password' placeholder="password" /></td>
-                    </tr>
-                    <tr>
-                        <td><input name="submit" type="submit" value="submit" /></td>
-                    </tr>
-                </table>
-            </form>
+<!--<div class="container-fluid">-->
+<!--    <div class="row">-->
+<!--        <div class="col-sm-4" style="background-color: yellow"></div>-->
+<!--        <div class="col-sm-4 d-flex justify-content-center" style="padding-top: 100px">-->
+<!--            <form name='f' action="login" method='POST'>-->
+<!--                <table>-->
+<!--                    <tr>-->
+<!--                        <td><input type='text' name='username' value='' placeholder="username"></td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td><input type='password' name='password' placeholder="password" /></td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td><input name="submit" type="submit" value="submit" /></td>-->
+<!--                    </tr>-->
+<!--                </table>-->
+<!--            </form>-->
 
-            <div class="alert" th:if="${errorMessage}" th:text="${errorMessage}"></div>
-        </div>
-        <div class="col-sm-4" style="background-color: yellow"></div>
+<!--            <div class="alert" th:if="${errorMessage}" th:text="${errorMessage}"></div>-->
+<!--        </div>-->
+<!--        <div class="col-sm-4" style="background-color: yellow"></div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<form class="form-signin" name='f' action="login" method='POST'>
+<!--    <img class="mb-4" src="" alt="" width="72" height="72">-->
+    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <label for="inputEmail" class="sr-only">Username</label>
+    <input name="username"type="text" id="inputEmail" class="form-control" placeholder="Username" required autofocus>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+    <div class="checkbox mb-3">
+        <label>
+            <input type="checkbox" value="remember-me"> Remember me
+        </label>
     </div>
-</div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    <div class="alert" th:if="${errorMessage}" th:text="${errorMessage}"></div>
+    <p class="mt-5 mb-3 text-muted">&copy; 2020</p>
+</form>
+
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

@@ -12,8 +12,12 @@ import java.util.List;
 @RequestMapping("api/registration")
 public class RegisterController {
 
-    @Autowired
     UserServiceImpl userServiceImpl;
+
+    @Autowired
+    public RegisterController(UserServiceImpl userServiceImpl) {
+        this.userServiceImpl = userServiceImpl;
+    }
 
     @GetMapping
     @Secured("ROLE_ADMIN")
@@ -30,6 +34,7 @@ public class RegisterController {
     @PostMapping
     @Secured("ROLE_ADMIN")
     public void saveUser(@RequestBody User user){
+        user.setEnabled(true);
         userServiceImpl.addUser(user);
     }
 }
