@@ -23,8 +23,8 @@ public class RegisterController {
 
     @DeleteMapping
     @Secured("ROLE_ADMIN")
-    public void deleteUser(@RequestParam long id){
-        userServiceImpl.deleteUser(id);
+    public void deleteUser(@RequestParam int id){
+        userServiceImpl.deleteUser((long) id);
     }
 
     @PostMapping
