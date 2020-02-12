@@ -8,15 +8,15 @@
 
         <div class="col-sm-8">
             <br>
-            <a href="#!user-create" class="btn btn-success float-right">Add user</a>
+            <a href="#!user-create" class="btn btn-outline-primary float-lg-right">Add user</a>
             <br>
         </div>
     </div>
 
     <div>
-        <div class="alert alert-info" ng-repeat="user in users | filter : search">
+        <div class="alert alert-secondary" ng-repeat="user in users | filter : search">
             <span class="text-capitalize"> <h2>{{user.username}}</h2></span>
-            <span class=""> <h3>{{user.email}}</h3></span>
-            <button ng-confirm-click="Are you sure to delete this record ?" confirmed-click="deleteUser(user.id,$index)" class="btn btn-danger text-right">Delete user</button>
+            <span> <p>{{user.email}}</p></span>
+            <button ng-confirm-click="Are you sure to delete this record ?" confirmed-click="deleteUser(user.id,$index)" class="btn btn-outline-primary">Delete user</button>
         </div>
     </div>

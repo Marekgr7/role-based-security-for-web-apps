@@ -10,10 +10,12 @@ app.config(function($routeProvider) {
     $routeProvider
         .when("/register", {
             controller : "registerCtrl",
-            templateUrl : "partials/user.html"
+            templateUrl : "partials/user.html",
+            css : "css/adminPanel.css"
         })
         .when("/user-create",{
             controller: "createUserCtrl",
-            templateUrl : "partials/user-create.html"
+            templateUrl : "partials/user-create.html",
+            css : "css/adminPanel.css"
         });
 });

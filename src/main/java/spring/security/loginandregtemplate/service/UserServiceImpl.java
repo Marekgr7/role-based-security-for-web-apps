@@ -33,7 +33,12 @@ public class UserServiceImpl implements UserService {
     }
 
     public void deleteUser(Long id){
-        userRepository.deleteById(id);
+
+        try {
+            userRepository.deleteById(id);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     public void addUser(User user){
@@ -42,7 +47,11 @@ public class UserServiceImpl implements UserService {
 //        roleList.add(role);
 //        user.setRoles(roleList);
         System.out.println(user.toString());
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        userRepository.save(user);
+        try{
+            user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+            userRepository.save(user);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }
