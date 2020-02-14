@@ -41,7 +41,7 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    public void addUser(User user){
+    public void saveUser(User user){
 //        Role role = roleRepository.getOne(2L);
 //        List<Role> roleList = new ArrayList(){};
 //        roleList.add(role);

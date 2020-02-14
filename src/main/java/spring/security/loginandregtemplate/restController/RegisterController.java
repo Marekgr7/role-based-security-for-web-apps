@@ -35,6 +35,6 @@ public class RegisterController {
     @Secured("ROLE_ADMIN")
     public void saveUser(@RequestBody User user){
         user.setEnabled(true);
-        userServiceImpl.addUser(user);
+        userServiceImpl.saveUser(user);
     }
 }
