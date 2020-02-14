@@ -1,8 +1,3 @@
-// var homeCtrl = angular.module('homeCtrl', ['ngRoute'] );
-//
-// homeCtrl.controller('home',['$scope', '$filter','$http', function($scope,$filter,$http) {
-//     $scope.sample  = "Marek";
-// }]);
 
 app.controller('registerCtrl',['$scope','$http',function ($scope,$http) {
 
@@ -34,18 +29,39 @@ app.controller('registerCtrl',['$scope','$http',function ($scope,$http) {
 }]);
 
 app.controller('createUserCtrl',['$scope','$http',function ($scope,$http) {
-    $scope.user = {};
+
     var passconf = "";
 
-    $scope.addUser = function (user) {
+    $scope.role = {
+        name: 'Customer'
+    };
+    // $scope.specialValue = {
+    //     "id": "12345",
+    //     "value": "green"
+    // };
 
-        // user.role = [];
+    // $scope.roleData = [
+    //     {
+    //         roleText: 'Choose role which created user will have: ',
+    //         answer1: [
+    //             {option1: 'Admin'},
+    //             {option1: 'User'},
+    //             {option1: 'Customer'},
+    //         ]
+    //     }
+    // ];
 
+    $scope.addUser = function (user,role) {
+
+        console.log("Rola to " + role.name);
         console.log(user);
         $http({
             method: 'POST',
             url: 'api/registration',
-            data: user
+            data: user,
+            params:{
+                roleName: role.name
+            }
         }).then(function successCallback(response) {
             alert("User has been added");
         }, function errorCallback(err) {

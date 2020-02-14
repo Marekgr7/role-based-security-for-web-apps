@@ -12,6 +12,6 @@ public interface UserService {
 
     public void deleteUser(Long id);
 
-    public void saveUser(User user);
+    public void saveUser(User user,String roleName);
 
 }

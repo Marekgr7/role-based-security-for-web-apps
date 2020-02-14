@@ -1,4 +1,4 @@
-<form ng-submit="addUser(user)">
+<form ng-submit="addUser(user,role)">
     <div class="row">
         <div class="col-sm-6">
             <br>
@@ -21,10 +21,32 @@
                 <label>Confirm password</label>
                 <input type="password" class="form-control" ng-model="passconf">
             </div>
+
+<!--            <div ng-repeat="r in roleData">-->
+<!--                <h4>{{r.roleText}}</h4>-->
+<!--                <p ng-repeat="a in r.answer1">-->
+<!--                    <input type="radio" name="answers+{{$parent.$index}}" ng-model="r.selectedAns" value="{{a.option1}}" />{{a.option1}}</p>-->
+<!--                <p ng-model="roleToSend">{{r.selectedAns}}</p>-->
+<!--            </div>-->
+
+            <div name="myForm">
+                <label>
+                    <input type="radio" ng-model="role.name" value="Admin">
+                    Admin
+                </label><br/>
+                <label>
+                    <input type="radio" ng-model="role.name" value="Employee">
+                    Employee
+                </label><br/>
+                <label>
+                    <input type="radio" ng-model="role.name" value="Customer">
+                    Customer
+                </label><br/>
+            </div>
         </div>
         <div class="col-sm-6"></div>
     </div>
-
+<br>
     <div class="row">
         <div class="col-sm-12">
             <button type="submit" class="btn btn-primary" ng-disabled="user.password !== passconf">Save changes</button>

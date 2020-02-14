@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 public class UserDetailsImpl implements UserDetails {
 
@@ -21,7 +22,7 @@ public class UserDetailsImpl implements UserDetails {
         this.username = user.getUsername();
         this.password = user.getPassword();
         this.active = user.isEnabled();
-        List<Role> roleList = user.getRoles();
+        Set<Role> roleList = user.getRoles();
         for (Role role: roleList) {
             authorities.add(new SimpleGrantedAuthority(role.getName()));
         }

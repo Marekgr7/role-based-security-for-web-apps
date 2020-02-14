@@ -4,9 +4,7 @@ import lombok.Data;
 import org.hibernate.annotations.Fetch;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "user")
@@ -25,8 +23,8 @@ public class User {
 
     private boolean isEnabled;
 
-    @OneToMany(fetch = FetchType.EAGER)
-    private List<Role> roles;
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Set<Role> roles = new HashSet<>();
 
     public User(){}
 
@@ -37,7 +35,7 @@ public class User {
         this.password = password;
     }
 
-    public User(String username, String email, String password, boolean isEnabled, List<Role> roles) {
+    public User(String username, String email, String password, boolean isEnabled, Set<Role> roles) {
         this.username = username;
         this.email = email;
         this.password = password;
@@ -55,5 +53,9 @@ public class User {
                 ", isEnabled=" + isEnabled +
                 ", roles=" + roles +
                 '}';
+    }
+
+    public void addRole(Role role){
+        roles.add(role);
     }
 }
