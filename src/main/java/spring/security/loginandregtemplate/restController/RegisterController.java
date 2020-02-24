@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("api/registration")
+@RequestMapping("/api/registration")
 public class RegisterController {
 
     UserServiceImpl userServiceImpl;
@@ -39,7 +39,7 @@ public class RegisterController {
     @GetMapping
     @Secured("ROLE_ADMIN")
     public List<User> fetchAllUsers(){
-        return userServiceImpl.fetchAllUsers();
+        return userServiceImpl.getAllUsers();
     }
 
     @DeleteMapping
@@ -51,7 +51,6 @@ public class RegisterController {
     @PostMapping
     @Secured("ROLE_ADMIN")
     public void saveUser(@RequestBody User user, @RequestParam String roleName){
-        System.out.println(roleName);
         user.setEnabled(true);
         userServiceImpl.saveUser(user,roleName);
     }

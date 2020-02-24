@@ -13,8 +13,8 @@ import java.util.Optional;
 @Repository
 public interface UserRepository extends JpaRepository<User,Long> {
 
-//    @Query(value = "SELECT * FROM loginandreg.user where username = :USERNAME", nativeQuery = true)
-    public Optional<User> findUserByUsername(String username);
+    Optional<User> findUserByUsername(String username);
 
-//    public List<Role> getRole();
+    User getUserByEmail(String email);
+
 }

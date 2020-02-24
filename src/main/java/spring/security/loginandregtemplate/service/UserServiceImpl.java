@@ -1,5 +1,8 @@
 package spring.security.loginandregtemplate.service;
 
+import io.leangen.graphql.annotations.GraphQLArgument;
+import io.leangen.graphql.annotations.GraphQLMutation;
+import io.leangen.graphql.annotations.GraphQLQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -15,12 +18,9 @@ import java.util.Optional;
 @Service
 public class UserServiceImpl implements UserService {
 
-
-    UserRepository userRepository;
-
-    RoleRepository roleRepository;
-
-    BCryptPasswordEncoder bCryptPasswordEncoder;
+    private UserRepository userRepository;
+    private RoleRepository roleRepository;
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
     public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
@@ -29,12 +29,23 @@ public class UserServiceImpl implements UserService {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
-    public List<User> fetchAllUsers(){
+    @GraphQLQuery(name = "users", description = "Fetch all Users")
+    public List<User> getAllUsers() {
         return userRepository.findAll();
     }
 
-    public void deleteUser(Long id){
+    @GraphQLQuery(name = "user")
+    public User getUser(@GraphQLArgument(name = "id") Long id) {
+        return userRepository.getOne(id);
+    }
 
+    @GraphQLQuery(name = "userEmail")
+    public User getUserEmailById(@GraphQLArgument(name = "email") String email) {
+        return userRepository.getUserByEmail(email);
+    }
+
+    @GraphQLMutation
+    public void deleteUser(@GraphQLArgument(name = "id") Long id){
         try {
             userRepository.deleteById(id);
         } catch (Exception e){

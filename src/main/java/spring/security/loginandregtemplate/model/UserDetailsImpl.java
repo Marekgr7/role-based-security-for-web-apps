@@ -8,20 +8,20 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
-
+/*
+Spring security supporting class
+ */
 public class UserDetailsImpl implements UserDetails {
-
 
     private String username;
     private String password;
     private boolean active;
     private List<GrantedAuthority> authorities = new ArrayList<>();
 
-
     public UserDetailsImpl(User user){
-        this.username = user.getUsername();
+        this.username = user.getUserName();
         this.password = user.getPassword();
-        this.active = user.isEnabled();
+        this.active = user.getEnabled();
         Set<Role> roleList = user.getRoles();
         for (Role role: roleList) {
             authorities.add(new SimpleGrantedAuthority(role.getName()));
